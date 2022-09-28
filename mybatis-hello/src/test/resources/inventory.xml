@@ -1,0 +1,16 @@
+<inventory>
+    <book year="2000">
+        <title>Snow Crash</title>
+        <author>Neal Stephenson</author>
+        <publisher>Spectra</publisher>
+        <isbc>0553380959</isbc>
+        <price>14.95</price>
+    </book>
+    <book year="2005">
+        <title>Burning Tower</title>
+        <author>Larry Niven</author>
+        <publisher>Pocket</publisher>
+        <isbc>0743416910</isbc>
+        <price>5.99</price>
+    </book>
+</inventory>
