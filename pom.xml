@@ -14,14 +14,14 @@
   <packaging>pom</packaging>
 
   <name>mybatis-examples Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
   <description>MyBatis技术内幕读书源码</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <mybatis.version>3.4.0</mybatis.version>
+    <mysql-connector.version>5.1.31</mysql-connector.version>
   </properties>
 
   <dependencies>
@@ -38,12 +38,12 @@
       <dependency>
         <groupId>org.mybatis</groupId>
         <artifactId>mybatis</artifactId>
-        <version>3.4.0</version>
+        <version>${mybatis.version}</version>
       </dependency>
       <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
-        <version>5.1.31</version>
+        <version>${mysql-connector.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
