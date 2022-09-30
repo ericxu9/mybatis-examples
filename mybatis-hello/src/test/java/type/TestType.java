@@ -19,6 +19,7 @@ public class TestType {
         System.out.println(f.getGenericType() instanceof ParameterizedType);//true
 
         Type type = TypeParameterResolver.resolveFieldType(f, ParameterizedTypeImpl.make(SubClassA.class, new Type[]{Long.class}, TestType.class));
+        //这个也可以生成
 //        Type type = TypeParameterResolver.resolveFieldType(f, TestType.class.getDeclaredField("sa").getGenericType());
         System.out.println(type.getClass()); //class org.apache.ibatis.reflection.TypeParameterResolver$ParameterizedTypeImpl
 
