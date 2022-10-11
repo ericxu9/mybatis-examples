@@ -17,4 +17,10 @@
         <include refid="Base_Column_List"/>
         FROM t_blog
     </select>
+
+    <select id="testResultHandlerSelect" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_blog
+    </select>
 </mapper>
