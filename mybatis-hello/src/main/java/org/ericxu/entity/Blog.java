@@ -1,17 +1,29 @@
 package org.ericxu.entity;
 
+import java.util.List;
+
 public class Blog {
 
-    private int blogId;
+    private Integer blogId;
     private String title;
-    private String author;
-    private int views;
+    private Integer authorId;
+    private List<Author> author;
+    private List<Post> posts;
 
-    public int getBlogId() {
+
+    public Blog() {
+    }
+
+
+    public Blog(Integer blogId) {
+        this.blogId = blogId;
+    }
+
+    public Integer getBlogId() {
         return blogId;
     }
 
-    public void setBlogId(int blogId) {
+    public void setBlogId(Integer blogId) {
         this.blogId = blogId;
     }
 
@@ -23,20 +35,28 @@ public class Blog {
         this.title = title;
     }
 
-    public String getAuthor() {
+    public List<Author> getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(List<Author> author) {
         this.author = author;
     }
 
-    public int getViews() {
-        return views;
+    public Integer getAuthorId() {
+        return authorId;
     }
 
-    public void setViews(int views) {
-        this.views = views;
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     @Override
@@ -44,8 +64,9 @@ public class Blog {
         return "Blog{" +
                 "blogId=" + blogId +
                 ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", views=" + views +
+                ", authorId=" + authorId +
+                ", author=" + author +
+                ", posts=" + posts +
                 '}';
     }
 }

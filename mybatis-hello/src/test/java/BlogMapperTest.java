@@ -52,4 +52,13 @@ public class BlogMapperTest {
             sqlSession.getMapper(BlogMapper.class).testResultHandlerSelect(resultHandler);
         }
     }
+
+    @Test
+    public void testSelectBlogDetails() {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+
+            List<Blog> blogs = sqlSession.getMapper(BlogMapper.class).selectBlogDetails(100);
+            System.out.println(blogs);
+        }
+    }
 }

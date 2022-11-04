@@ -4,12 +4,68 @@
     <resultMap id="BaseResultMap" type="Blog">
         <id column="blog_id" jdbcType="INTEGER" property="blogId"/>
         <result column="title" jdbcType="VARCHAR" property="title"/>
-        <result column="author" jdbcType="VARCHAR" property="author"/>
-        <result column="views" jdbcType="INTEGER" property="views"/>
+        <result column="author_id" jdbcType="VARCHAR" property="authorId"/>
     </resultMap>
 
+    <resultMap id="detailedBlogResultMap" type="Blog">
+        <!-- 映射使用的构造函数 -->
+        <constructor>
+            <idArg column="blog_id" javaType="int"/>
+        </constructor>
+        <!-- 映射普通属性 -->
+        <result property="title" column="title"/>
+         <!-- 嵌套映射 JavaBean 类型的属性 -->
+         <association property="author" resultMap="authorResult"/>
+         <!-- 映射 集合 类型的属性 -->
+         <collection property="posts" ofType="org.ericxu.entity.Post">
+            <id column="post_id" property="postId"/>
+            <result column="post_content" property="content"/>
+            <collection property="comments" column="post_id" javaType="ArrayList" ofType="Post" select="selectComment"/>
+            <discriminator javaType="int" column="draft">
+                <case value="1" resultType="Post">
+                    <result column="draft" property="draft"/>
+                </case>
+            </discriminator>
+        </collection>
+    </resultMap>
+
+    <!-- 定义嵌套查询 resultMap -->
+    <resultMap id="authorResult" type="Author">
+        <id column="author_id" property="authorId"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+    </resultMap>
+
+    <!-- 定义嵌套查询使用的sql -->
+    <select id="selectComment" resultType="Comment">
+        SELECT comment_id AS commentId, post_id AS postId, content FROM t_comment WHERE post_id = #{post_id}
+    </select>
+
+    <select id="selectBlogDetails" resultMap="detailedBlogResultMap">
+        SELECT
+            B.blog_id AS blog_id,
+            B.title AS title,
+            B.author_id AS author_id,
+            A.author_id AS author_id,
+            A.username AS username,
+            A.password AS password,
+            A.email AS email,
+            P.post_id AS post_id,
+            P.blog_id AS post_blog_id,
+            P.content AS post_content,
+            P.draft AS draft
+        FROM
+            t_blog B
+            LEFT OUTER JOIN t_author A ON B.author_id = A.author_id
+            LEFT OUTER JOIN t_post P ON B.blog_id = P.blog_id
+        WHERE
+            B.blog_id = #{blogId,jdbcType=INTEGER}
+    </select>
+
+
     <sql id="Base_Column_List">
-        blog_id, title, author, views
+        blog_id, title, author_id
     </sql>
 
     <select id="selectAll" resultMap="BaseResultMap">

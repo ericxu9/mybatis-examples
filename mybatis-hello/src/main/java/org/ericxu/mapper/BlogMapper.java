@@ -1,7 +1,5 @@
 package org.ericxu.mapper;
 
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.session.ResultHandler;
 import org.ericxu.entity.Blog;
 
@@ -12,4 +10,6 @@ public interface BlogMapper {
     List<Blog> selectAll();
 
     void testResultHandlerSelect(ResultHandler<Blog> handler);
+
+    List<Blog> selectBlogDetails(Integer blogId);
 }
