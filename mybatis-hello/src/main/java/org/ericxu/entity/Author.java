@@ -7,6 +7,16 @@ public class Author {
     private String password;
     private String email;
 
+    public Author() {
+    }
+
+    public Author(Integer authorId, String username, String password, String email) {
+        this.authorId = authorId;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
     public Integer getAuthorId() {
         return authorId;
     }
@@ -37,5 +47,15 @@ public class Author {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "authorId=" + authorId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

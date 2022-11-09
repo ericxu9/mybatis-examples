@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Blog {
 
+    public static String staticField = "fff";
+
     private Integer blogId;
     private String title;
     private Integer authorId;
