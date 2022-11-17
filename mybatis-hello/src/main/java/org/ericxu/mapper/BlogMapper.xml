@@ -7,6 +7,8 @@
         <result column="author_id" jdbcType="VARCHAR" property="authorId"/>
     </resultMap>
 
+<!--    <cache/>-->
+
     <resultMap id="detailedBlogResultMap" type="Blog">
         <!-- 映射使用的构造函数 -->
         <constructor>

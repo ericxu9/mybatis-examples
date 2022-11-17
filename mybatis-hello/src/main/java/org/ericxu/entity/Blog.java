@@ -1,8 +1,9 @@
 package org.ericxu.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Blog {
+public class Blog implements Serializable {
 
     public static String staticField = "fff";
 
